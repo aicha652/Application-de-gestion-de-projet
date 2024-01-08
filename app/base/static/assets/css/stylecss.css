@@ -1,0 +1,104 @@
+ *{
+         padding: 0;
+         margin: 0;
+         box-sizing: border-box;
+         }
+body{
+         background-position: center;
+         font-family: sans-serif;}
+.menu-bar{
+         background:#000080;
+         text-align: center;
+         }
+.menu-bar ul{
+         display: inline-flex;
+         list-style: none;
+         color: #fff;
+       }
+
+.menu-bar ul li{
+       width: 143px;
+       margin: 10px;
+       padding: 15px;
+       }
+.menu-bar ul li a{
+       text-decoration: none;
+       color: #fff;
+       }
+.active, .menu-bar ul li:hover{
+       background: #1369ce;
+       border-radius:3px;
+}
+.sub-menu-l{
+       display: none;
+       }
+.menu-bar ul li:hover .sub-menu-l{
+       display: block;
+       position: absolute;
+       background: #000080;
+       margin-top: 15px;
+       margin-left:-15px;
+       }
+.menu-bar ul li:hover .sub-menu-l ul{
+      display:block;
+      margin: 10px;
+       }
+.menu-bar ul li:hover .sub-menu-l ul li{
+      width: 160px;
+      padding: 10px;
+      border-bottom: 1px dotted #fff;
+      background: transparent;
+      border-radius: 0;
+      text-align: left;
+}
+.menu-bar ul li:hover .sub-menu-l ul li:last-child{
+border-bottom:none;}
+
+
+
+
+
+
+        .user_card {
+        width:450px;
+        height:250px;
+        margin-top: auto;
+        margin-bottom:auto;
+        background:white ;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction:column;
+        padding: 10px;
+       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       .webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       .moz-box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       border-radius: 5px;
+       }
+
+       .from_container{
+       margin-top: 50px;
+       }
+       #form-title{
+       margin-top: -10px;
+       color:#f7ba5b;}
+
+       .login_btn:focus{
+       box-shadow:none !important;
+       outline: 0px !important;
+       }
+       .login_container{
+       padding: 0 2rem;
+       }
+       .input-group-text{
+       background:#f7ba5b !important;
+       color: white !important;
+       border: 0 !important;
+       border-radius: 0.25rem 0 0 0.25rem !important;
+       }
+       .input_user,
+       .input_pass: focus{
+       box-shadow: none !important;
+       outline: 0px !important;
+       }
+

@@ -1,0 +1,251 @@
+{% extends "base_site.html" %}
+
+{% block title %} {% if edit %}Edition de compte {% else %} Ajout nouveau utilisateur{% endif %}{% endblock title %}
+
+
+{% block stylesheets %}
+    <link href="/static/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/assets/css/stylecss.css" rel="stylesheet" type="text/css"/>
+{% endblock stylesheets %}
+
+{% block subheader %}
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            {% if not edit %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Nouveau projet</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% else %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Édition des informations</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <a href="{{ url_for('home_blueprint.list_projets') }}"
+                       class="btn btn-light-danger font-weight-bolder btn-sm">Annuler</a>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% endif %}
+            <!--begin::Toolbar-->
+
+
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+{% endblock subheader %}
+
+{% block content %}
+    {% from "_render_fields.html" import render_field, render_field_select %}
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid" >
+        <!--begin::Container-->
+        <div class=" container " >
+            <form id="projet_form" class="form" method="POST" encytpe="multipart/form-data" >
+                <div class="card card-custom">
+                    <!--begin::Header-->
+
+                    <div class="card-header" style="background-color: #ffe4e1">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                               <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Communication/Clipboard-check.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                      <rect x="0" y="0" width="24" height="24"/>
+                                      <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                      <path d="M10.875,15.75 C10.6354167,15.75 10.3958333,15.6541667 10.2041667,15.4625 L8.2875,13.5458333 C7.90416667,13.1625 7.90416667,12.5875 8.2875,12.2041667 C8.67083333,11.8208333 9.29375,11.8208333 9.62916667,12.2041667 L10.875,13.45 L14.0375,10.2875 C14.4208333,9.90416667 14.9958333,9.90416667 15.3791667,10.2875 C15.7625,10.6708333 15.7625,11.2458333 15.3791667,11.6291667 L11.5458333,15.4625 C11.3541667,15.6541667 11.1145833,15.75 10.875,15.75 Z" fill="#000000"/>
+                                      <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                    </g>
+                                    </svg><!--end::Svg Icon-->
+                               </span>
+                                {% if edit %}
+                                    Édition des informations
+                                {% else %}
+                                    Nouveau projet
+                                {% endif %}
+                                <small>Informations nouveau projet</small>
+                            </h3>
+                        </div>
+                        <div class="card-toolbar">
+
+                            <button id="submit" type="submit" class="btn btn-light-warning font-weight-bolder">
+                                <i class=" icon-lg la la-save"></i>
+                                Enregistrer
+                            </button>
+                            <!--end::Dropdown-->
+
+                        </div>
+                    </div>
+
+
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
+                                {% for message in messages %}
+                                    <div class="alert alert-custom alert-notice alert-light-warning fade show"
+                                         role="alert">
+                                        <div class="alert-text">{{ message }}</div>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+
+
+                    <!--end::Header-->
+                    <div class="card-body" style="background-color: #faf0e6">
+                        <div class="row">
+                            <div class="col-xl-2"></div>
+                            <div class="col-xl-8">
+
+                                {{ form.csrf_token }}
+                                <div class="row">
+                                    <div class="col-xl-9">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.titre, placeholder="Nom du projet", style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.date, placeholder="AAAA-MM-JJ", style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <!--begin::Input-->
+                                        {{ render_field_select(form.prestation, placeholder="Choisir la préstation") }}
+                                        <!--end::Input-->
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <!--begin::Input-->
+                                        {{ render_field_select(form.ouvrage, placeholder="Choisir le type d'ouvrage") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+                            {% if not edit  %}
+                                <div class="separator separator-solid mt-4 mb-10"></div>
+                                <div class="form-group">
+                                    <label class="font-size-h6">Type de client</label>
+                                    <div class="radio-inline">
+                                        <label class="radio radio-lg">
+                                            <input value="societes" type="radio" checked="checked" name="client_radio">
+                                            <span></span>Personne morale</label>
+                                        <label class="radio radio-lg">
+                                            <input value="personnes" type="radio" name="client_radio">
+                                            <span></span>Personne physique</label>
+                                        <label class="radio radio-lg">
+                                            <input value="administrations" type="radio" name="client_radio">
+                                            <span></span>Administration</label>
+                                    </div>
+
+                                    <span class="form-text text-muted mt-2">Veuillez choisir le type de contact</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="font-size-h6">Nom du client</label>
+                                    <select id="client_select" class="selectpicker form-control form-control-solid form-control-lg "
+                                            data-live-search="true"
+                                            title="Choisir le client">
+                                    </select>
+                                </div>
+                            {% endif %}
+                                {{ form.client_id }}
+
+                                <!--begin::Input-->
+                                {{ render_field_select(form.agent, placeholder="Choisir un agent") }}
+                                <!--end::Input-->
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            let $clientSelect = $('#client_select');
+            let $clientId = $('#client_id');
+
+
+            var arrows;
+            if (KTUtil.isRTL()) {
+                arrows = {
+                    leftArrow: '<i class="la la-angle-right"></i>',
+                    rightArrow: '<i class="la la-angle-left"></i>'
+                }
+            } else {
+                arrows = {
+                    leftArrow: '<i class="la la-angle-left"></i>',
+                    rightArrow: '<i class="la la-angle-right"></i>'
+                }
+            }
+            $('#date').datepicker({
+                rtl: KTUtil.isRTL(),
+                todayHighlight: true,
+                orientation: "bottom left",
+                templates: arrows,
+                language: 'fr'
+            });
+    {% if not edit  %}
+            select_filler("societes");
+
+            $('input[type=radio][name=client_radio]').change(function() {
+                let genre = $(this).val();
+                select_filler(genre)
+            });
+
+            $clientSelect.change(function(){
+                $clientId.val($(this).val())
+            });
+
+        {#    $("#submit").click(function(event) {
+                event.preventDefault();
+                if ($clientSelect.val() === "" || $clientId.val() === "") {
+                    Swal.fire("Aucun client", "Veuillez sélectionner un client !", "warning");
+                } else {
+                    $(this).trigger('click');
+                }
+            });#}
+
+            function select_filler(genre) {
+                let data_url = `${HOST_URL}get-contacts/${genre}`;
+                $.get(data_url, function(data) {
+                    $clientSelect.html("");
+                    data.forEach(contact => {
+                        $clientSelect.append(new Option(contact.nom, contact.id))
+                    });
+                    $clientSelect.selectpicker("refresh")
+                })
+            }
+        })
+    {% endif %}
+    </script>
+
+{% endblock %}

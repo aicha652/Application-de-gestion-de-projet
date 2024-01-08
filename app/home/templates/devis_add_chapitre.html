@@ -1,0 +1,120 @@
+{% extends "base_site.html" %}
+
+{% block title %} {% if edit %}Edition de compte {% else %} Ajout nouveau utilisateur{% endif %}{% endblock title %}
+
+
+{% block stylesheets %}
+    <link href="/static/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/assets/css/stylecss.css" rel="stylesheet" type="text/css"/>
+{% endblock stylesheets %}
+
+{% block subheader %}
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            {% if not edit %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Nouveau Devis</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% else %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Édition des informations</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <a href="{{ url_for('home_blueprint.edit_devis', devis_id=devis.id) }}"
+                       class="btn btn-light-danger font-weight-bolder btn-sm">Annuler</a>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% endif %}
+            <!--begin::Toolbar-->
+
+
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+{% endblock subheader %}
+
+{% block content %}
+    {% from "_render_fields.html" import render_field, render_field_select %}
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class=" container ">
+            <form id="projet_form" class="form" method="POST" encytpe="multipart/form-data">
+                <div class="card card-custom">
+                    <!--begin::Header-->
+
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                <span class="svg-icon svg-icon-danger svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Design/Difference.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                     <rect x="0" y="0" width="24" height="24"/>
+                                     <path d="M6,9 L6,15 C6,16.6568542 7.34314575,18 9,18 L15,18 L15,18.8181818 C15,20.2324881 14.2324881,21 12.8181818,21 L5.18181818,21 C3.76751186,21 3,20.2324881 3,18.8181818 L3,11.1818182 C3,9.76751186 3.76751186,9 5.18181818,9 L6,9 Z M17,16 L17,10 C17,8.34314575 15.6568542,7 14,7 L8,7 L8,6.18181818 C8,4.76751186 8.76751186,4 10.1818182,4 L17.8181818,4 C19.2324881,4 20,4.76751186 20,6.18181818 L20,13.8181818 C20,15.2324881 19.2324881,16 17.8181818,16 L17,16 Z" fill="#000000" fill-rule="nonzero"/>
+                                     <path d="M9.27272727,9 L13.7272727,9 C14.5522847,9 15,9.44771525 15,10.2727273 L15,14.7272727 C15,15.5522847 14.5522847,16 13.7272727,16 L9.27272727,16 C8.44771525,16 8,15.5522847 8,14.7272727 L8,10.2727273 C8,9.44771525 8.44771525,9 9.27272727,9 Z" fill="#000000" opacity="0.3"/>
+                                     </g>
+                                     </svg><!--end::Svg Icon--></span>
+                                {% if edit %}
+                                    Édition des informations
+                                {% else %}
+                                    Nouveau chapitre
+                                {% endif %}
+                                <small>Informations du nouveau chapitre</small>
+                            </h3>
+                        </div>
+                        <div class="card-toolbar">
+
+                            <button id="submit" type="submit" class="btn btn-light-warning font-weight-bolder">
+                                <i class=" icon-lg la la-save"></i>
+                                Enregistrer
+                            </button>
+                            <!--end::Dropdown-->
+
+                        </div>
+                    </div>
+
+                    <!--end::Header-->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-2"></div>
+                            <div class="col-xl-8">
+                                {{ form.csrf_token }}
+                                <div>
+                                    Nouveau chapitre devis numéro {{ devis.numero }}
+                                </div>
+                                {{ render_field(form.titre, placeholder="Saisir le titre", mandatory=true ) }}
+                            </div>
+                            <div class="col-xl-2"></div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+        })
+    </script>
+{% endblock %}

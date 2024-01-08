@@ -1,0 +1,178 @@
+{% extends "base_site.html" %}
+
+{% block title %} {% if edit %}Edition de compte {% else %} Ajout nouveau utilisateur{% endif %}{% endblock title %}
+
+
+{% block stylesheets %}
+    <link href="/static/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" type="text/css"/>
+{% endblock stylesheets %}
+
+{% block subheader %}
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            {% if not edit %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Nouveau Compte</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% else %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Édition de compte</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <a href="{{ url_for('home_blueprint.list_users') }}"
+                       class="btn btn-light-danger font-weight-bolder btn-sm">Annuler</a>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% endif %}
+            <!--begin::Toolbar-->
+
+
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+{% endblock subheader %}
+
+{% block content %}
+    {% from "_render_fields.html" import render_field %}
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class=" container ">
+            <form class="form" method="POST" encytpe="multipart/form-data">
+                <div class="card card-custom">
+                    <!--begin::Header-->
+
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                <span class="card-icon">
+                                    <i class="fas  fa-user-plus icon-xl text-primary"></i>
+                                </span>
+                                {% if edit %}
+                                    Édition de Compte
+                                {% else %}
+                                    Création de Compte
+                                {% endif %}
+                                <small>Informations nouveau utilisateur</small>
+                            </h3>
+                        </div>
+                        <div class="card-toolbar">
+
+                            <button id="submit" type="submit" class="btn btn-light-warning font-weight-bolder">
+                                <i class=" icon-lg la la-save"></i>
+                                Enregistrer
+                            </button>
+                            <!--end::Dropdown-->
+
+                        </div>
+                    </div>
+
+
+                    <!--end::Header-->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-2"></div>
+                            <div class="col-xl-8">
+
+                                {{ form.csrf_token }}
+                                {% if msg %}
+                                    <div class="alert alert-custom alert-danger fade show" role="alert">
+                                        <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                                        <div class="alert-text">{{ msg }}</div>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="form-group row">
+                                    <label class="col-3 col-form-label font-size-h6">Admnistrateur</label>
+                                    <div class="col-3">
+                                        <span class="switch switch-outline switch-icon switch-warning">
+                                            <label>
+                                                {{ form.is_admin }}
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.last_name, placeholder="Nom") }}
+                                        <!--end::Input-->
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.first_name, placeholder="Prénom") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+
+                                <!--begin::Input-->
+                                {{ render_field(form.email, placeholder="exemple@email.com",
+                                 info="Saisissez un email valid") }}
+                                <!--end::Input-->
+                                {% if not edit %}
+                                    <!--begin::Input-->
+                                    {{ render_field(form.password, placeholder="mot de passe",
+                                 info="Choisissez un mot de passe d'au moin 8 caractère") }}
+                                    <!--end::Input-->
+                                    <!--begin::Input-->
+                                    {{ render_field(form.confirm_password, placeholder="mot de passe",
+                                 info="Confirmez le mot de passe") }}
+                                    <!--end::Input-->
+                                {% endif %}
+                                <div class="form-group row">
+                                    {% if edit %}
+                                        <label class="col-6 col-form-label font-size-h6">Activer/Désactiver ce
+                                            compte</label>
+                                    {% else %}
+                                        <label class="col-3 col-form-label font-size-h6">Activer ce compte </label>
+                                    {% endif %}
+                                    <div class="col-3">
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            <label>
+                                                {{ form.is_active }}
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-xl-2"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

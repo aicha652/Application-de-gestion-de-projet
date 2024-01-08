@@ -1,0 +1,295 @@
+{% extends "base_site.html" %}
+
+{% block title %} Page de projet {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block subheader %}
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Details-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Page projet</h5>
+                <!--end::Title-->
+                <!--begin::Separator-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                <!--end::Separator-->
+
+                <div class="d-flex align-items-center mr-5">
+                    <span class="text-dark-50 font-weight-bold">
+                        {{ projet.titre }}
+                    </span>
+                </div>
+                <!--begin::Separator-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                <!--end::Separator-->
+                <div class="d-flex align-items-center">
+                    <span class="text-dark-50 font-weight-bold">{{ projet.client.get_name }}</span>
+                </div>
+
+            </div>
+            <!--end::Details-->
+            <!--begin::Toolbar-->
+
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+{% endblock subheader %}
+
+{% block content %}
+    {% from "_render_snippets.html" import render_menu %}
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class=" container-fluid ">
+            {{ render_menu(projet, "devis") }}
+
+            <!--begin::Card-->
+            <div class="card">
+                <!--begin::Card body-->
+                <div class="card-body p-12">
+                    <!--begin::Form-->
+                    <form action="" id="kt_invoice_form">
+                        <!--begin::Wrapper-->
+                        <div class="d-flex  justify-content-around  align-items-start ">
+                            <!--begin::Input group-->
+                            <div class="d-flex align-items-center flex-equal ml-4 order-2"
+                                 data-bs-toggle="tooltip" data-bs-trigger="hover"
+                                 title="Date du devis">
+                                <!--begin::Date-->
+                                <div class="font-size-h6 font-weight-bolder text-gray-700 text-nowrap">Date :</div>
+                                <!--end::Date-->
+                                <!--begin::Input-->
+                                <div class="position-relative d-flex align-items-center w-150px ">
+                                    <!--begin::Datepicker-->
+                                    <input class="form-control font-weight-bolder pl-5 border-0"
+                                           placeholder="Select date" name="invoice_date"/>
+                                    <!--end::Datepicker-->
+                                    <!--begin::Icon-->
+                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
+                                    <span class="svg-icon svg-icon-2 position-absolute ml-4 right-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                             viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24"/>
+                                                <path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                      fill="#000000" fill-rule="nonzero"
+                                                      transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)"/>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                    <!--end::Icon-->
+                                </div>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="d-flex flex-center flex-equal
+                             text-nowrap order-1 order-xxl-2 ml-4"
+                                 data-bs-toggle="tooltip" data-bs-trigger="hover" title="Enter invoice number">
+                                <span class="font-size-h4 font-weight-bolder text-gray-800">Devis #</span>
+                                <input type="text" class="form-control border-0
+                                font-weight-bolder text-gray-400 font-size-h3 w-125px" value="2021001"
+                                       placehoder="..."/>
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="d-flex align-items-center justify-content-end flex-equal order-3 fw-row"
+                                 data-bs-toggle="tooltip" data-bs-trigger="hover" title="Specify invoice due date">
+                                <!--begin::Date-->
+                                <div class="font-size-h6 font-weight-bolder text-gray-700 text-nowrap">Due Date:</div>
+                                <!--end::Date-->
+                                <!--begin::Input-->
+                                <div class="position-relative d-flex align-items-center w-150px">
+                                    <!--begin::Datepicker-->
+                                    <input class="form-control form-control-white font-weight-bolder pl-5 border-0"
+                                           placeholder="Select date" name="invoice_due_date"/>
+                                    <!--end::Datepicker-->
+                                    <!--begin::Icon-->
+                                    <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
+                                    <span class="svg-icon svg-icon-2 position-absolute right-0 mr-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                             viewBox="0 0 24 24" version="1.1">
+                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                <polygon points="0 0 24 0 24 24 0 24"/>
+                                                <path d="M6.70710678,15.7071068 C6.31658249,16.0976311 5.68341751,16.0976311 5.29289322,15.7071068 C4.90236893,15.3165825 4.90236893,14.6834175 5.29289322,14.2928932 L11.2928932,8.29289322 C11.6714722,7.91431428 12.2810586,7.90106866 12.6757246,8.26284586 L18.6757246,13.7628459 C19.0828436,14.1360383 19.1103465,14.7686056 18.7371541,15.1757246 C18.3639617,15.5828436 17.7313944,15.6103465 17.3242754,15.2371541 L12.0300757,10.3841378 L6.70710678,15.7071068 Z"
+                                                      fill="#000000" fill-rule="nonzero"
+                                                      transform="translate(12.000003, 11.999999) rotate(-180.000000) translate(-12.000003, -11.999999)"/>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                    <!--end::Icon-->
+                                </div>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <!--end::Top-->
+                        <!--begin::Separator-->
+                        <div class="separator separator-dashed my-10"></div>
+                        <!--end::Separator-->
+                        <!--begin::Wrapper-->
+                        <div class="mb-0">
+                            <!--begin::Table wrapper-->
+                            <div class="table-responsive mb-10">
+                                <!--begin::Table-->
+                                <table class="table g-5 gs-0 mb-0 font-weight-bolder text-gray-700"
+                                       data-kt-element="items">
+                                    <!--begin::Table head-->
+                                    <thead>
+                                        <tr class="border-bottom font-size-h6 font-weight-bolder text-gray-700 text-uppercase">
+                                            <th class="min-w-300px w-475px">Article</th>
+                                            <th class="min-w-100px w-100px">Quantité</th>
+                                            <th class="min-w-150px w-150px">Prix</th>
+                                            <th class="min-w-100px w-150px text-end">Total</th>
+                                            <th class="min-w-75px w-75px text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody>
+                                        <tr data-kt-element="empty">
+                                            <th colspan="5" class="text-muted text-center py-10">Aucun article</th>
+                                        </tr>
+
+                                    </tbody>
+                                    <!--end::Table body-->
+                                    <!--begin::Table foot-->
+                                    <tfoot>
+                                        <tr class="border-top border-top-dashed align-top font-size-h6 font-weight-bolder text-gray-700">
+                                            <th id="add_item" class="text-primary">
+                                                <button class="btn btn-link py-1" data-kt-element="add-item">+ Article
+                                                </button>
+
+                                                <button class="btn btn-link py-1" data-kt-element="add-chapter">+ Chapitre
+                                                </button>
+                                            </th>
+                                            <th id="submit_item" class="text-primary" style="display: none">
+                                                <button class="btn btn-sm btn-light-warning py-1"
+                                                        data-kt-element="submit-item">Enregistrer
+                                                </button>
+                                            </th>
+                                            <th colspan="2" class="border-bottom border-bottom-dashed pr-0">
+                                                <div class="d-flex flex-column align-items-start">
+                                                    <div class="fs-5">Subtotal</div>
+                                                </div>
+                                            </th>
+                                            <th colspan="2" class="border-bottom border-bottom-dashed text-end">$
+                                                <span data-kt-element="sub-total">0.00</span>
+                                            </th>
+                                        </tr>
+                                        <tr class="align-top font-weight-bolder text-gray-700">
+                                            <th></th>
+                                            <th colspan="2" class="font-size-h4 pr-0">Total</th>
+                                            <th colspan="2" class="text-end  font-size-h4 text-nowrap">$
+                                                <span data-kt-element="grand-total">0.00</span>
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                    <!--end::Table foot-->
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                            <!--begin::Item template-->
+                            <table class="table d-none" data-kt-element="item-template">
+                                <tr data-kt-element="item">
+                                    <td class="pl-7">
+                                        <input type="text" class="form-control form-control-solid mb-2" name="name[]"
+                                               placeholder="Item name"/>
+                                        <input type="text" class="form-control form-control-solid" name="description[]"
+                                               placeholder="Description"/>
+
+                                    </td>
+                                    <td class="ps-0">
+                                        <input class="form-control form-control-solid" type="number" min="1"
+                                               name="quantity[]" placeholder="1" data-kt-element="quantity"/>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control form-control-solid text-end"
+                                               name="price[]" placeholder="0.00" data-kt-element="price"/>
+                                    </td>
+                                    <td class="pt-8 text-end">$
+                                        <span data-kt-element="total">0.00</span>
+                                    </td>
+                                    <td class="pt-5 text-end">
+                                        <button type="button" class="btn btn-sm btn-icon btn-active-color-primary"
+                                                data-kt-element="remove-item">
+                                            <!--begin::Svg Icon | path: icons/duotone/General/Trash.svg-->
+                                            <span class="svg-icon svg-icon-3">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
+                                                     height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
+                                                              fill="#000000" fill-rule="nonzero"/>
+                                                        <path d="M14,4.5 L14,4 C14,3.44771525 13.5522847,3 13,3 L11,3 C10.4477153,3 10,3.44771525 10,4 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z"
+                                                              fill="#000000" opacity="0.3"/>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table class="table d-none" data-kt-element="empty-template">
+                                <tr data-kt-element="empty">
+                                    <th colspan="5" class="text-muted text-center py-10">Aucun article</th>
+                                </tr>
+                            </table>
+                            <table class="table d-none" data-kt-element="chapter-template">
+                                <tr data-kt-element="chapter">
+                                    <td>
+                                        <input type="text" class="form-control form-control-solid mb-2" name="chapter[]"
+                                               placeholder="Titre chapitre"/>
+                                    </td>
+
+                                </tr>
+                            </table>
+                            <table class="table d-none" data-kt-element="add-subitem-template">
+                                <tr class=" font-size-h6 font-weight-bolder text-gray-700 ">
+                                    <th id="add_subitem" class="text-primary border-0 pt-0">
+                                        <button class="btn btn-link py-1 text-right ml-8" data-kt-element="add-subitem">
+                                            + Sous-Article
+                                        </button>
+                                    </th>
+                                </tr>
+                            </table>
+                            <!--end::Item template-->
+                            <!--begin::Notes-->
+                            <div class="mb-0">
+                                <label class="form-label font-size-h6 font-weight-bolder text-gray-700">Notes</label>
+                                <textarea name="notes" class="form-control form-control-solid" rows="3"
+                                          placeholder="Thanks for your business"></textarea>
+                            </div>
+                            <!--end::Notes-->
+                        </div>
+                        <!--end::Wrapper-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Card body-->
+            </div>
+            <!--end::Card-->
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/static/assets/js/csrf_setup.js"></script>
+    <script src="/static/assets/js/create_devis.js"></script>
+
+{% endblock %}

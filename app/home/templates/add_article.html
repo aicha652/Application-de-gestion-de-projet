@@ -1,0 +1,135 @@
+{% extends "base_site.html" %}
+
+{% block title %} {% if edit %}Edition de compte {% else %} Ajout nouveau utilisateur{% endif %}{% endblock title %}
+
+
+{% block stylesheets %}
+    <link href="/static/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/assets/css/min.css" rel="stylesheet" type="text/css"/>
+
+{% endblock stylesheets %}
+
+{% block subheader %}
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            {% if not edit %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Nouveau ouvrage</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% else %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Édition des informations</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <a href="{{ url_for('home_blueprint.list_ouvrages') }}"
+                       class="btn btn-light-danger font-weight-bolder btn-sm">Annuler</a>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% endif %}
+            <!--begin::Toolbar-->
+
+
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+{% endblock subheader %}
+
+{% block content %}
+    {% from "_render_fields.html" import render_field %}
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class=" container ">
+            <form class="form" method="POST" encytpe="multipart/form-data">
+                <div class="card card-custom" style="margin-left:150px ;width:800px; margin-top:60px">
+                    <!--begin::Header-->
+
+
+
+                     {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
+                                {% for message in messages %}
+                                    <div class="alert alert-custom alert-notice alert-light-warning fade show"
+                                         role="alert">
+                                        <div class="alert-text">{{ message }}</div>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+
+
+                    <!--end::Header-->
+                   <div class="container">
+	<div class="header">
+		<h2>Create Account</h2>
+	</div>
+	<form id="form" class="form">
+		<div class="form-control">
+			<label for="username">Username</label>
+			<input type="text" placeholder="florinpop17" id="username" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Email</label>
+			<input type="email" placeholder="a@florin-pop.com" id="email" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Password</label>
+			<input type="password" placeholder="Password" id="password"/>
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Password check</label>
+			<input type="password" placeholder="Password two" id="password2"/>
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<button>Submit</button>
+	</form>
+</div>
+
+
+
+
+
+
+                </div>
+            </form>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

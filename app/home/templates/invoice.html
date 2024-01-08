@@ -1,0 +1,384 @@
+
+<style>
+    :root {
+    --body-bg: rgb(204, 204, 204);
+    --white: #ffffff;
+    --darkWhite: #ccc;
+    --black: #000000;
+    --dark: #615c60;
+    --themeColor: #22b8d1;
+    --pageShadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+}
+
+/* Font Include */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+
+body {
+    background-color: var(--body-bg);
+}
+
+.page {
+    background: var(--white);
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: var(--pageShadow);
+}
+
+.page[size="A4"] {
+    width: 23.1cm;
+    height: 33.36cm;
+    overflow: hidden;
+}
+
+.bb {
+    border-bottom: 3px solid var(--darkWhite);
+}
+
+/* Top Section */
+.top-content {
+    padding-bottom: 15px;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.top-left p {
+    margin: 0;
+}
+
+.top-left .graphic-path {
+    height: 40px;
+    position: relative;
+}
+
+.top-left .graphic-path::before {
+    content: "";
+    height: 20px;
+    background-color: var(--dark);
+    position: absolute;
+    left: 15px;
+    right: 0;
+    top: -15px;
+    z-index: 2;
+}
+
+.top-left .graphic-path::after {
+    content: "";
+    height: 22px;
+    width: 17px;
+    background: var(--black);
+    position: absolute;
+    top: -13px;
+    left: 6px;
+    transform: rotate(45deg);
+}
+
+.top-left .graphic-path p {
+    color: var(--white);
+    height: 40px;
+    left: 0;
+    right: -100px;
+    text-transform: uppercase;
+    background-color: var(--themeColor);
+    font: 26px;
+    z-index: 3;
+    position: absolute;
+    padding-left: 10px;
+}
+
+
+
+/* User Store Section */
+.store-user {
+    padding-bottom: 25px;
+}
+
+.store-user p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.store-user .address {
+    font-weight: 400;
+}
+
+.store-user h2 {
+    color: var(--themeColor);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.extra-info p span {
+    font-weight: 400;
+}
+
+/* Product Section */
+thead {
+    color: var(--white);
+    background: var(--themeColor);
+}
+
+.table td,
+.table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr th:first-child,
+tr td:first-child {
+    text-align: left;
+}
+
+.media img {
+    height: 60px;
+    width: 60px;
+}
+
+.media p {
+    font-weight: 400;
+    margin: 0;
+}
+
+.media p.title {
+    font-weight: 600;
+}
+
+/* Balance Info Section */
+.balance-info .table td,
+.balance-info .table th {
+    padding: 0;
+    border: 0;
+}
+
+.balance-info tr td:first-child {
+    font-weight: 600;
+}
+
+tfoot {
+    border-top: 2px solid var(--darkWhite);
+}
+
+tfoot td {
+    font-weight: 600;
+}
+
+/* Cart BG */
+.cart-bg {
+    height: 250px;
+    bottom: 32px;
+    left: -40px;
+    opacity: 0.3;
+    position: relative;
+}
+
+
+
+/* Footer Section */
+footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+
+}
+
+
+footer a {
+    color: var(--themeColor);
+}
+
+footer p {
+    padding: 6px;
+    border: 3px solid var(--darkWhite);
+    background-color: var(--white);
+    display: inline-block;
+}
+
+
+
+</style>
+
+
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Custom Style -->
+
+
+    <title>Invoice..!</title>
+</head>
+
+<body>
+    <div class="my-5 page" size="A4">
+        <div class="p-5">
+            <section class="top-content bb d-flex justify-content-between">
+                <div class="d-flex flex-row p-2">
+                    <div class="d-flex flex-column"> <span class="font-weight-bold"style="font-size: 30px">Devis</span>
+                        <small style="margin-left: 595px">ETS CONSULT</small>
+                        <small style="margin-left: 580px">38 Boulevard Moulay Hassan I</small>
+                        <small style="margin-left: 650px">Casablanca, 20070</small>
+                    </div>
+                </div>
+
+            </section>
+            <hr>
+
+            <section class="store-user mt-5">
+                <div class="col-10">
+                    <div class="row bb pb-3">
+                        <div class="col-7">
+                            <p style="color: #c5c4c4">Date:</p>
+                            <p class="address">{{ devis.created_at }}</p>
+                        </div>
+                        <div class="col-5">
+                            <p  style="color: #c5c4c4">Devis N:</p>
+                            <p class="address"> {{ devis.numero }}</p>
+                        </div>
+                         <div class="col-5">
+                            <p  style="color: #c5c4c4">Devis pour:</p>
+                            <p class="address">{{ projet.client.get_name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="product-area mt-4">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="font-weight-bold font-size-h5 border-bottom border-3 ">
+                            <td>Article</td>
+                            <td>Quantite</td>
+                            <td>Prix unitaire</td>
+                            <td>Total</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if devis.chapitres %}
+                                    {% for chapitre in devis.chapitres %}
+                                        <tbody class="border-bottom border-top border-dark border-2">
+                                            <tr class="font-weight-bold font-size-h5 border-bottom border-3 ">
+                                                <td class="pl-0" colspan="3">{{ loop.index }}- {{ chapitre.titre }}</td>
+                                                <td class="pr-0 text-right" colspan="2">
+
+                                                </td>
+                                            </tr>
+                                            {% for article in chapitre.articles %}
+                                                <tr class="font-weight-boldest border-bottom border-3">
+                                                    <td class="pt-7 pl-4">{{ article.titre }} - {{ article.info }} </td>
+                                                    <td class="text-right pt-7">{{ article.quantite }}</td>
+                                                    <td class="text-right pt-7">{{ article.prix_unitaire }} MAD</td>
+                                                    <td class="text-info pr-0 pt-7 text-right">{{ article.prix_total }} MAD</td>
+                                                    <td class="pr-0 pt-4 text-right">
+
+                                                    </td>
+                                                </tr>
+                                                {% for sous_article in article.sous_articles %}
+                                                    <tr class="font-weight-boldest  border-bottom border-3">
+                                                        <td class="pt-7 pl-4">{{ sous_article.titre }} - {{ sous_article.info }}</td>
+                                                        <td class="text-right pt-7">{% if sous_article.quantite %}{{ sous_article.quantite }}{% endif %}</td>
+                                                        <td class="text-right pt-7">{% if sous_article.prix_unitaire %}{{ sous_article.prix_unitaire }} MAD{% endif %}</td>
+                                                        <td class="text-info pr-0 pt-7 text-right">{% if sous_article.prix_total %}{{ sous_article.prix_total }} MAD{% endif %}</td>
+                                                        <td class="pr-0 pt-4 text-right">
+
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+
+                                            {% endfor %}
+
+                                        </tbody>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% for article in devis.articles %}
+                                        <tr class="font-weight-boldest border-bottom border-3">
+                                            <td class="pt-7 pl-4">{{ article.titre }} - {{ article.info }} </td>
+                                            <td class="text-right pt-7">{{ article.quantite }}</td>
+                                            <td class="text-right pt-7">{{ article.prix_unitaire }} MAD</td>
+                                            <td class="text-info pr-0 pt-7 text-right">{{ article.prix_total }} MAD</td>
+                                            <td class="pr-0 pt-4 text-right">
+
+                                            </td>
+                                        </tr>
+                                        {% for sous_article in article.sous_articles %}
+                                            <tr class="font-weight-boldest border-bottom border-3">
+                                                <td class="pt-7 pl-4">{{ sous_article.titre }} - {{ sous_article.info }}</td>
+                                                <td class="text-right pt-7">{% if sous_article.quantite %}{{ sous_article.quantite }}{% endif %}</td>
+                                                <td class="text-right pt-7">{% if sous_article.prix_unitaire %}{{ sous_article.prix_unitaire }} MAD{% endif %}</td>
+                                                <td class="text-info pr-0 pt-7 text-right" style="color: green">{% if sous_article.prix_total %}{{ sous_article.prix_total }} MAD{% endif %}</td>
+                                                <td class="pr-0 pt-4 text-right">
+
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                    {% endfor %}
+                        </tbody>
+                    </table>
+            </section>
+
+            <section class="balance-info">
+                <div class="row">
+                    <div class="col-4">
+                        <table class="table border-0 table-hover" style="margin-left: 530px">
+                            <tfoot>
+                                <tr>
+                                    <td><p>Montant total HT:</p></td>
+                                    <td class="text-danger font-size-h3 font-weight-boldest">{{ devis.montant_ht }} MAD</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <br><br>
+
+             <section class="balance-info">
+                <div class="row">
+                    <div class="col-8" style="margin-left: 10px">
+                        <p class="m-0 font-weight-bold"> Note: </p>
+                        <p>{{ devis.info }}</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <footer>
+                <div class="social pt-3">
+                    <span class="pr-1">
+                       <i class="fas fa-envelope"></i>
+                        <span>etsconsult@gmail.com</span>
+                    </span>
+                    <span class="pr-1">
+                    </span>
+                    <span class="pr-1">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>: (05 22) 22.92.12</span>
+                    </span>
+                    <span class="pr-1">
+                        <i class="fas fa-fax"></i>
+                        <span>: (05 22) 22.92.12</span>
+                    </span>
+                    <span class="pr-1">
+                         <span class="fa mr-1 fa-map-marker"></span>
+                        <span>N°38 Avenue Mly Hassan 1er, CP 20070 Casablanca.</span>
+                    </span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+
+</body></html>

@@ -1,0 +1,118 @@
+{% extends "base_site_auth.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block pagedescription %} Page d'authentification {% endblock %}
+
+{% block content %}
+
+
+<link rel="stylesheet" type="text/css" href="/static/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/static/assets/css/all.min.css">
+
+<link href="/static/assets//plugins/global/plugins.bundle.css?v=7.0.6" rel="stylesheet" type="text/css"/>
+<link href="/static/assets//plugins/custom/prismjs/prismjs.bundle.css?v=7.0.6" rel="stylesheet" type="text/css"/>
+
+<!--begin::Main-->
+<div class="d-flex flex-column flex-root">
+    <!--begin::Login-->
+    <div class="login login-5 login-signin-on d-flex flex-row-fluid" id="kt_login">
+        <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid"
+             style="background-image: url(/static/assets/media/Geniecivil-LP.jpg);">
+            <div class="login-form text-center text-white p-7 position-relative overflow-hidden">
+                <!--begin::Login Header-->
+                <div class="d-flex flex-center mb-15">
+                    <a href="#">
+                        <img src="assets/media/logos/logo-letter-13.png" class="max-h-75px" alt=""/>
+                    </a>
+                </div>
+                <!--end::Login Header-->
+
+                <!--begin::Login Sign in form-->
+            <div class="container">
+              <div class="main">
+                  <div class="mb-20">
+                         <br><br>
+                        <h3 class="font-weight-bolder" style="color: #87CEEB">Bienvenue sur MaBET</h3>
+                        <p class="font-weight-bold" style="color: #FFDAB9">Veuillez saisir vos données d'authentification:</p>
+                    </div>
+                <div class="login-signin">
+                    <form class="form" id="kt_login_signin_form">
+
+
+                        <div class="form-group">
+                            <i class="fa fa-user" style="font-size: 28px"></i>
+                            <input type="text" placeholder="Email" name="email"/>
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-lock" style="font-size: 28px"></i>
+                            <input type="password" placeholder="Mot de passe" name="password"/>
+                        </div>
+
+
+                        <div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8 opacity-60">
+                           {# <div class="checkbox-inline">
+                                <label class="checkbox checkbox-outline checkbox-white text-white m-0">
+                                    <input type="checkbox" name="remember"/>
+                                    <span></span>
+                                    Garder la session active
+                                </label>
+                            </div>#}
+                            <a href="javascript:;" id="kt_login_forgot" class="font-weight-bolder" style="color: #FFDAB9"></a>
+                        </div>
+
+                        <div class="form-group text-center mt-10">
+                            <button id="kt_login_signin_submit" class="btn btn-pill btn-light-warning opacity-90 px-15 py-3">
+                                S'authentifier
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <!--end::Login Sign in form-->
+
+                <!--begin::Login forgot password form-->
+
+                <div class="login-forgot">
+                    <div class="mb-20">
+                        <p style="color: #FFFFFF">Saisissez vote email afin de le réinitiliser</p>
+                    </div>
+                    <form class="form" id="kt_login_forgot_form">
+                        <div class="form-group mb-10">
+                            <i class="fa fa-user" style="font-size: 25px"></i>
+                            <input type="text" placeholder="Email" name="email" autocomplete="off"/>
+                        </div>
+                        <div class="form-group">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <button id="kt_login_forgot_submit" class="btn opacity-60 px-2" style="width: 130px; margin-left: 20px">Envoyer
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button id="kt_login_forgot_cancel" class="btn opacity-60 px-2" style="width: 130px; margin-left: 30px">Annuler
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </form>
+                </div>
+              </div>
+                <!--end::Login forgot password form-->
+            </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Login-->
+</div>
+<!--end::Main-->
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/static/assets/js/login/login-general.js"></script>
+
+    <script src="/static/assets/js/csrf_setup.js"></script>
+{% endblock %}

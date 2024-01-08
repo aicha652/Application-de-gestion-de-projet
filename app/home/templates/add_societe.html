@@ -1,0 +1,195 @@
+{% extends "base_site.html" %}
+
+{% block title %} {% if edit %}Edition de compte {% else %} Ajout nouveau utilisateur{% endif %}{% endblock title %}
+
+
+{% block stylesheets %}
+    <link href="/static/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" type="text/css"/>
+{% endblock stylesheets %}
+
+{% block subheader %}
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            {% if not edit %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Nouveau Société</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% else %}
+                <!--begin::Info-->
+                <div class="d-flex align-items-center flex-wrap mr-2">
+                    <!--begin::Page Title-->
+                    <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Édition des informations</h5>
+                    <!--end::Page Title-->
+                    <!--begin::Actions-->
+                    <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+                    <span class="text-muted font-weight-bold mr-4">....</span>
+                    <a href="{{ url_for('home_blueprint.list_societes') }}"
+                       class="btn btn-light-danger font-weight-bolder btn-sm">Annuler</a>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Info-->
+            {% endif %}
+            <!--begin::Toolbar-->
+
+
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+{% endblock subheader %}
+
+{% block content %}
+    {% from "_render_fields.html" import render_field %}
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid" style="width:810px">
+        <!--begin::Container-->
+        <div class=" container ">
+            <form class="form" method="POST" encytpe="multipart/form-data" style="margin-left: 272px;">
+                <div class="card card-custom">
+                    <!--begin::Header-->
+
+                    <div class="card-header" style="background-color: #87CEFA">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                <span class="card-icon">
+                                    <i class="far fa-building text-primary"  style="font-size: 23px;"></i>
+                                </span>
+                                {% if edit %}
+                                    Édition des informations
+                                {% else %}
+                                    Ajouter le contact de la société
+                                {% endif %}
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
+                                {% for message in messages %}
+                                    <div class="alert alert-custom alert-notice alert-light-warning fade show"
+                                         role="alert">
+                                        <div class="alert-text">{{ message }}</div>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+
+
+                    <!--end::Header-->
+                    <div class="card-body" style="background-color: #87CEEB">
+                        <div class="row">
+                            <div class="col-xl-2"></div>
+                            <div class="col-xl-8">
+
+                                {{ form.csrf_token }}
+                                <div class="row">
+                                     <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.nom, placeholder="Nom", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.type, placeholder="Type", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.domaine, placeholder="Domaine", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.tel1, placeholder="Tel1", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.tel2, placeholder="Tel2", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                     <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.fax, placeholder="Fax", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.email, placeholder="Email", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xl">
+                                        <!--begin::Input-->
+                                        {{ render_field(form.adresse, placeholder="Adresse", mandatory=true, style="background-color:#FFFFFF") }}
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+
+
+
+                            <button id="submit" type="submit" class="btn" style="background-color: #00FFFF; width: 280px;">
+                                Ajouter
+                            </button>
+                            <!--end::Dropdown-->
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

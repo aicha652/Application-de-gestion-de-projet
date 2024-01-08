@@ -1,0 +1,248 @@
+{% extends "base_site.html" %}
+
+{% block title %} Tableau de bord {% endblock title %}
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block subheader %}
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Details-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5"></h5>
+                <!--end::Title-->
+                <!--begin::Separator-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                <!--end::Separator-->
+
+                <div class="d-flex align-items-center mr-5">
+                    <span class="text-dark-50 font-weight-bold">
+                    </span>
+                </div>
+                <!--begin::Separator-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                <!--end::Separator-->
+                <div class="d-flex align-items-center">
+                    <span class="text-dark-50 font-weight-bold"><strong></strong></span>
+                </div>
+
+            </div>
+            <!--end::Details-->
+            <!--begin::Toolbar-->
+
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+{% endblock subheader %}
+
+{% block content %}
+
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class=" container-fluid ">
+
+
+        <div class="row m-0">
+        <div class="col bg-light-primary px-6 py-8 rounded-xl mr-7">
+           <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Communication/Add-user.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																		<polygon points="0 0 24 0 24 24 0 24" />
+																		<path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+																		<path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+																	</g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+              <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">Les utilisateurs</a>
+               <span class="name" style="margin-left: 70px">{{ count_users }}</span>
+         </div>
+
+
+
+        <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
+															<span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Layers.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																		<polygon points="0 0 24 0 24 24 0 24" />
+																		<path d="M12.9336061,16.072447 L19.36,10.9564761 L19.5181585,10.8312381 C20.1676248,10.3169571 20.2772143,9.3735535 19.7629333,8.72408713 C19.6917232,8.63415859 19.6104327,8.55269514 19.5206557,8.48129411 L12.9336854,3.24257445 C12.3871201,2.80788259 11.6128799,2.80788259 11.0663146,3.24257445 L4.47482784,8.48488609 C3.82645598,9.00054628 3.71887192,9.94418071 4.23453211,10.5925526 C4.30500305,10.6811601 4.38527899,10.7615046 4.47382636,10.8320511 L4.63,10.9564761 L11.0659024,16.0730648 C11.6126744,16.5077525 12.3871218,16.5074963 12.9336061,16.072447 Z" fill="#000000" fill-rule="nonzero" />
+																		<path d="M11.0563554,18.6706981 L5.33593024,14.122919 C4.94553994,13.8125559 4.37746707,13.8774308 4.06710397,14.2678211 C4.06471678,14.2708238 4.06234874,14.2738418 4.06,14.2768747 L4.06,14.2768747 C3.75257288,14.6738539 3.82516916,15.244888 4.22214834,15.5523151 C4.22358765,15.5534297 4.2250303,15.55454 4.22647627,15.555646 L11.0872776,20.8031356 C11.6250734,21.2144692 12.371757,21.2145375 12.909628,20.8033023 L19.7677785,15.559828 C20.1693192,15.2528257 20.2459576,14.6784381 19.9389553,14.2768974 C19.9376429,14.2751809 19.9363245,14.2734691 19.935,14.2717619 L19.935,14.2717619 C19.6266937,13.8743807 19.0546209,13.8021712 18.6572397,14.1104775 C18.654352,14.112718 18.6514778,14.1149757 18.6486172,14.1172508 L12.9235044,18.6705218 C12.377022,19.1051477 11.6029199,19.1052208 11.0563554,18.6706981 Z" fill="#000000" opacity="0.3" />
+																	</g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+            <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">Les personnes</a>
+               <span class="name" style="margin-left: 70px">{{ count_personnes }}</span>
+         </div>
+
+
+
+
+
+          <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 ">
+           <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Media/Equalizer.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																		<rect x="0" y="0" width="24" height="24" />
+																		<rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5" />
+																		<rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5" />
+																		<rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5" />
+																		<rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5" />
+																	</g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+              <a href="#" class="text-warning font-weight-bold font-size-h6">Les sociétés</a>
+               <span class="name" style="margin-left: 70px">{{ count_societes  }}</span>
+         </div>
+
+
+        <div class="col bg-light-success px-6 py-8 rounded-xl">
+           <span class="svg-icon svg-icon-3x svg-icon-success d-block mb-7">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Communication/Urgent-mail.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                                        <rect fill="#000000" opacity="0.3" x="4" y="4" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="4" y="10" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="10" y="4" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="10" y="10" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="16" y="4" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="16" y="10" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="4" y="16" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="10" y="16" width="4" height="4" rx="2"/>
+                                                                        <rect fill="#000000" x="16" y="16" width="4" height="4" rx="2"/>
+                                                                    </g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+              <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Les administrations</a>
+               <span class="name" style="margin-left: 90px, font-size: 10px">{{ count_administrations }}</span>
+         </div>
+
+
+
+         </div>
+
+
+        </div>
+    </div>
+
+     <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class=" container-fluid ">
+
+
+        <div class="row m-0">
+        <div class="col bg-light-white px-6 py-8 rounded-xl mr-7">
+           <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Communication/Add-user.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                        <polygon points="0 0 24 0 24 24 0 24"/>
+                                                                        <path d="M10.5857864,12 L5.46446609,6.87867966 C5.0739418,6.48815536 5.0739418,5.85499039 5.46446609,5.46446609 C5.85499039,5.0739418 6.48815536,5.0739418 6.87867966,5.46446609 L12,10.5857864 L18.1923882,4.39339828 C18.5829124,4.00287399 19.2160774,4.00287399 19.6066017,4.39339828 C19.997126,4.78392257 19.997126,5.41708755 19.6066017,5.80761184 L13.4142136,12 L19.6066017,18.1923882 C19.997126,18.5829124 19.997126,19.2160774 19.6066017,19.6066017 C19.2160774,19.997126 18.5829124,19.997126 18.1923882,19.6066017 L12,13.4142136 L6.87867966,18.5355339 C6.48815536,18.9260582 5.85499039,18.9260582 5.46446609,18.5355339 C5.0739418,18.1450096 5.0739418,17.5118446 5.46446609,17.1213203 L10.5857864,12 Z" fill="#000000" opacity="0.3" transform="translate(12.535534, 12.000000) rotate(-360.000000) translate(-12.535534, -12.000000) "/>
+                                                                        <path d="M6,18 L9,18 C9.66666667,18.1143819 10,18.4477153 10,19 C10,19.5522847 9.66666667,19.8856181 9,20 L4,20 L4,15 C4,14.3333333 4.33333333,14 5,14 C5.66666667,14 6,14.3333333 6,15 L6,18 Z M18,18 L18,15 C18.1143819,14.3333333 18.4477153,14 19,14 C19.5522847,14 19.8856181,14.3333333 20,15 L20,20 L15,20 C14.3333333,20 14,19.6666667 14,19 C14,18.3333333 14.3333333,18 15,18 L18,18 Z M18,6 L15,6 C14.3333333,5.88561808 14,5.55228475 14,5 C14,4.44771525 14.3333333,4.11438192 15,4 L20,4 L20,9 C20,9.66666667 19.6666667,10 19,10 C18.3333333,10 18,9.66666667 18,9 L18,6 Z M6,6 L6,9 C5.88561808,9.66666667 5.55228475,10 5,10 C4.44771525,10 4.11438192,9.66666667 4,9 L4,4 L9,4 C9.66666667,4 10,4.33333333 10,5 C10,5.66666667 9.66666667,6 9,6 L6,6 Z" fill="#000000" fill-rule="nonzero"/>
+																	</g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+              <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">Les ouvrages</a>
+               <span class="name" style="margin-left: 70px">{{ count_ouvrages }}</span>
+         </div>
+
+
+
+        <div class="col bg-light-dark px-6 py-8 rounded-xl mr-7">
+															<span class="svg-icon svg-icon-3x svg-icon-dark d-block my-2">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Layers.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                       <rect x="0" y="0" width="24" height="24"/>
+                                                                       <path d="M12.7442084,3.27882877 L19.2473374,6.9949025 C19.7146999,7.26196679 20.003129,7.75898194 20.003129,8.29726722 L20.003129,15.7027328 C20.003129,16.2410181 19.7146999,16.7380332 19.2473374,17.0050975 L12.7442084,20.7211712 C12.2830594,20.9846849 11.7169406,20.9846849 11.2557916,20.7211712 L4.75266256,17.0050975 C4.28530007,16.7380332 3.99687097,16.2410181 3.99687097,15.7027328 L3.99687097,8.29726722 C3.99687097,7.75898194 4.28530007,7.26196679 4.75266256,6.9949025 L11.2557916,3.27882877 C11.7169406,3.01531506 12.2830594,3.01531506 12.7442084,3.27882877 Z M12,14.5 C13.3807119,14.5 14.5,13.3807119 14.5,12 C14.5,10.6192881 13.3807119,9.5 12,9.5 C10.6192881,9.5 9.5,10.6192881 9.5,12 C9.5,13.3807119 10.6192881,14.5 12,14.5 Z" fill="#000000"/>
+                                                                    </g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+            <a href="#" class="text-dark font-weight-bold font-size-h6 mt-2">Les prestations</a>
+               <span class="name" style="margin-left: 70px">{{ count_prestations }}</span>
+         </div>
+
+
+
+
+
+          <div class="col bg-light-warning px-6 py-8 rounded-xl mr-7 ">
+           <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Media/Equalizer.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                       <rect x="0" y="0" width="24" height="24"/>
+                                                                       <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                                                       <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                                                       <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+                                                                       <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+																	   <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+                                                                       <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+																	   <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+                                                                       <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+                                                                     </g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+              <a href="#" class="text-warning font-weight-bold font-size-h6">Les projets</a>
+               <span class="name" style="margin-left: 70px">{{ count_projets  }}</span>
+         </div>
+
+
+        <div class="col bg-light-success px-6 py-8 rounded-xl">
+           <span class="svg-icon svg-icon-3x svg-icon-success d-block mb-7">
+																<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Communication/Urgent-mail.svg-->
+																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                      <rect x="0" y="0" width="24" height="24"/>
+                                                                      <circle fill="#000000" cx="9" cy="15" r="6"/>
+                                                                      <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3"/>
+                                                                    </g>
+																</svg>
+																<!--end::Svg Icon-->
+															</span>
+              <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">Les devis</a>
+               <span class="name" style="margin-left: 70px">{{ count_devis }}</span>
+         </div>
+
+
+
+         </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/static/assets/js/csrf_setup.js"></script>
+
+{% endblock %}
+
